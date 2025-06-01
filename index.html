@@ -3,87 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel's Bio</title> <style>
+    <title>Daniel's Bio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: left; /* ВЕСЬ ТЕКСТ ВЛЕВО */
-            margin: 0; /* Убираем стандартные отступы */
-            padding: 50px; /* Добавляем внутренние отступы, чтобы текст не прилипал к краю */
-            background-color: #1a1a1a; /* Запасной цвет, если GIF не загрузится */
+            font-family: 'Roboto', sans-serif; /* Основной шрифт для всего текста */
+            text-align: left;
+            margin: 0;
+            padding: 50px;
+            background-color: #1a1a1a; /* Запасной цвет */
             color: #f0f0f0;
             line-height: 1.6;
-            min-height: 100vh; /* Минимальная высота страницы, чтобы фон занимал весь экран */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Выравнивание элементов по левому краю */
-            justify-content: flex-start; /* Элементы сверху */
+            align-items: flex-start;
+            justify-content: flex-start;
 
             /* Фон - ТВОЯ GIF */
             background-image: url('https://i.pinimg.com/originals/8a/f8/03/8af803500ecd7bedc4114b0ce566dfa9.gif'); /* ССЫЛКА НА ТВОЮ GIF */
-            background-size: cover; /* Заполнение всего фона */
-            background-position: center; /* Центрирование GIF */
-            background-repeat: no-repeat; /* Не повторять GIF */
-            background-attachment: fixed; /* Фиксированный фон при скролле */
-            background-blend-mode: overlay; /* Режим наложения, чтобы текст лучше читался */
-            background-color: rgba(0, 0, 0, 0.5); /* Добавляем темный оверлей для читаемости */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay; /* Режим наложения */
+            background-color: rgba(0, 0, 0, 0.7); /* Более темный оверлей для лучшей читаемости */
         }
         h1 {
-            color: #ffffff; /* Белый цвет для "Yo bro, that's my bio:" */
+            font-family: 'Montserrat', sans-serif; /* Отдельный шрифт для заголовка */
+            color: #ffffff; /* Белый цвет для заголовка */
             margin-bottom: 30px;
-            text-align: left; /* Заголовок влево */
-            width: 100%; /* Занимает всю доступную ширину */
+            text-align: left;
+            width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень для заголовка */
         }
         p {
             font-size: 1.1em;
-            max-width: 800px; /* Ограничиваем ширину текста */
+            max-width: 800px;
             margin-bottom: 15px;
-            text-align: left; /* Параграфы влево */
-            color: #f0f0f0; /* Цвет по умолчанию для остального текста */
+            text-align: left;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Легкая тень для текста */
         }
-        /* Красивые цвета для остальной инфы */
         .info-item {
-            color: #8bff88; /* Светло-зеленый (для имени, возраста, страны, игр, животных) */
+            color: #00e676; /* Яркий неоновый зеленый */
         }
         .love-text {
-            color: #ff4d4d; /* Красный цвет для "A <3" */
-            font-size: 1.2em;
+            color: #ff3366; /* Яркий живой красный */
+            font-size: 1.3em; /* Чуть крупнее */
             margin-top: 20px;
             margin-bottom: 30px;
+            font-weight: 700; /* Жирный */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
         }
         .contacts {
             margin-top: 40px;
             font-size: 1.1em;
         }
         .contacts p {
-            color: #f0f0f0; /* Цвет для текста "You can find me here:" */
+            color: #f0f0f0;
         }
         .contacts a {
-            color: #61dafb;
+            color: #4fc3f7; /* Яркий голубой */
             text-decoration: none;
-            margin-right: 15px; /* Отступ справа, т.к. теперь слева */
+            margin-right: 15px;
             transition: color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
         .contacts a:hover {
-            color: #a0e8ff;
+            color: #81d4fa; /* Чуть светлее при наведении */
         }
         .visitor-counter {
             margin-top: 50px;
-            text-align: left; /* Счетчик тоже влево */
+            text-align: left;
             width: 100%;
-            display: flex; /* Делаем flex-контейнером для выравнивания */
-            align-items: center; /* Выравнивание по центру по вертикали */
-            gap: 8px; /* Расстояние между элементами внутри счетчика */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 0; /* Отступ вокруг счетчика для четкости */
         }
         .visitor-counter img {
             vertical-align: middle;
-            /* margin-right: 5px; -- Убрал, т.к. используем gap */
         }
         .visitor-counter .eye-icon {
-            font-size: 1.5em; /* Размер эмодзи глаза */
-            line-height: 1; /* Для лучшего выравнивания */
-            color: #ffffff; /* Цвет глаза, можно изменить */
+            font-size: 1.6em; /* Чуть крупнее глаз */
+            line-height: 1;
+            color: #ffffff; /* Белый глаз */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Тень для глаза */
         }
-        /* Удалил стили для .visitor-counter p, потому что параграфа больше нет */
+        /* Стили для счетчика, чтобы он тоже выглядел контрастнее */
+        .visitor-counter img {
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7)); /* Тень для самого счетчика */
+        }
     </style>
 </head>
 <body>
@@ -106,7 +117,9 @@
     </div>
 
     <div class="visitor-counter">
-        <span class="eye-icon">👁️</span> <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fbiocrime.me&countColor=%23263759&style=flat&label=&labelColor=%23c4a2a2" alt="Visitors"> </div>
+        <span class="eye-icon">👁️</span>
+        <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fbiocrime.me&countColor=%23263759&style=flat&label=&labelColor=%23c4a2a2" alt="Visitors">
+    </div>
 
 </body>
 </html>
