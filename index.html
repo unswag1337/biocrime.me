@@ -11,8 +11,8 @@
             text-align: left;
             margin: 0;
             padding: 50px; /* Отступы для десктопа */
-            background-color: #0d0d0d; /* Еще более темный запасной цвет */
-            color: #f0f0f0;
+            /* Убрали background-color: #0d0d0d; как запасной, так как фото теперь главное */
+            color: #f0f0f0; /* Цвет текста, по умолчанию светлый */
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
@@ -20,14 +20,15 @@
             align-items: flex-start;
             justify-content: flex-start;
 
-            /* НОВОЕ КРУТОЕ ФОТО */
+            /* НОВОЕ КРУТОЕ ФОТО - теперь БЕЗ затемнения */
             background-image: url('https://i.pinimg.com/736x/ba/a4/40/baa440d08aa165fb16ff236985052eaf.jpg'); /* ССЫЛКА НА ТВОЁ ФОТО */
             background-size: cover; /* Покрываем весь фон, обрезая лишнее */
             background-position: top center; /* Смещаем фокус на ВЕРХнюю часть изображения, центрируем по горизонтали */
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-blend-mode: overlay;
-            background-color: rgba(0, 0, 0, 0.9); /* МАКСИМАЛЬНО темный оверлей для лучшей читаемости текста на темном фото */
+            /* background-blend-mode: overlay; <-- УБРАЛИ ЭТОТ РЕЖИМ НАЛОЖЕНИЯ */
+            /* background-color: rgba(0, 0, 0, 0.9); <-- УБРАЛИ ЭТОТ ТЕМНЫЙ ОВЕРЛЕЙ */
+            /* Если нужен небольшой оттенок, можно использовать: background-color: rgba(0, 0, 0, 0.1); */
         }
         h1 {
             font-family: 'Space Mono', monospace; /* Крутой, моноширинный шрифт для заголовка */
@@ -36,7 +37,8 @@
             text-align: left;
             width: 100%;
             font-weight: 700; /* Делаем жирнее */
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5); /* Неоновая тень */
+            /* Усиливаем тени для лучшей читаемости на светлом фоне */
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 0 0 25px rgba(0, 255, 255, 0.7); /* Более сильная неоновая тень */
         }
         p {
             font-size: 1.1em; /* Размер шрифта для десктопа */
@@ -44,12 +46,12 @@
             margin-bottom: 15px;
             text-align: left;
             color: #f0f0f0; /* Цвет по умолчанию для текста, который не имеет info-item */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Тень для читаемости */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Более сильная тень для читаемости */
         }
         .info-item {
             color: #00ffff; /* Яркий циан (голубой), неоновый */
             font-weight: 700; /* Делаем жирнее для акцента */
-            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Легкая неоновая тень */
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7), 0 0 12px rgba(0, 255, 255, 0.5); /* Более сильная неоновая тень */
         }
         .love-text {
             color: #ff00ff; /* Яркий фуксия (пурпурный), неоновый */
@@ -57,7 +59,7 @@
             margin-top: 25px; /* Чуть больше отступ сверху */
             margin-bottom: 35px; /* Чуть больше отступ снизу */
             font-weight: 700;
-            text-shadow: 0 0 8px rgba(255, 0, 255, 0.7), 0 0 15px rgba(255, 0, 255, 0.4); /* Сильная неоновая тень */
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.9), 0 0 20px rgba(255, 0, 255, 0.6); /* Сильная неоновая тень */
         }
         .contacts {
             margin-top: 40px;
@@ -65,7 +67,7 @@
         }
         .contacts p {
             color: #f0f0f0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Более сильная тень */
         }
         .contacts a {
             color: #00ff7f; /* Яркий весенний зеленый, неоновый */
@@ -73,7 +75,7 @@
             margin-right: 15px;
             transition: color 0.3s ease;
             font-weight: 700; /* Жирнее */
-            text-shadow: 0 0 5px rgba(0, 255, 127, 0.5); /* Легкая неоновая тень */
+            text-shadow: 0 0 8px rgba(0, 255, 127, 0.7), 0 0 12px rgba(0, 255, 127, 0.5); /* Более сильная неоновая тень */
         }
         .contacts a:hover {
             color: #66ffbb; /* Чуть светлее при наведении */
@@ -89,30 +91,30 @@
         }
         .visitor-counter img {
             vertical-align: middle;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)); /* Сильная тень для счетчика */
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7)); /* Сильная тень для счетчика */
         }
         .visitor-counter .eye-icon {
             font-size: 1.8em; /* Еще крупнее глаз */
             line-height: 1;
             color: #ffffff; /* Белый глаз */
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Сильная неоновая тень для глаза */
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9); /* Сильная неоновая тень для глаза */
         }
 
         /* --- АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ --- */
-        @media (max-width: 768px) { /* Применяется для экранов шириной до 768px (планшеты, телефоны) */
+        @media (max-width: 768px) {
             body {
-                padding: 20px; /* Уменьшаем отступы по бокам */
+                padding: 20px;
             }
             h1 {
-                font-size: 1.8em; /* Уменьшаем размер заголовка */
+                font-size: 1.8em;
                 margin-bottom: 20px;
             }
             p {
-                font-size: 1em; /* Уменьшаем основной текст */
+                font-size: 1em;
                 margin-bottom: 10px;
             }
             .love-text {
-                font-size: 1.2em; /* Уменьшаем "A <3" */
+                font-size: 1.2em;
                 margin-top: 15px;
                 margin-bottom: 20px;
             }
@@ -121,18 +123,18 @@
                 font-size: 1em;
             }
             .contacts a {
-                margin-right: 10px; /* Уменьшаем отступ между ссылками */
+                margin-right: 10px;
             }
             .visitor-counter {
                 margin-top: 40px;
-                gap: 5px; /* Уменьшаем отступ между глазом и счетчиком */
+                gap: 5px;
             }
             .visitor-counter .eye-icon {
-                font-size: 1.4em; /* Уменьшаем глаз */
+                font-size: 1.4em;
             }
         }
 
-        @media (max-width: 480px) { /* Для очень маленьких экранов (смартфоны) */
+        @media (max-width: 480px) {
             body {
                 padding: 15px;
             }
@@ -146,12 +148,12 @@
                 font-size: 1.1em;
             }
             .contacts a {
-                display: block; /* Ссылки в контактах в отдельной строке */
+                display: block;
                 margin-bottom: 5px;
                 margin-right: 0;
             }
             .visitor-counter {
-                flex-direction: row; /* На всякий случай, чтобы глаз и счетчик были в ряд */
+                flex-direction: row;
                 justify-content: flex-start;
             }
         }
