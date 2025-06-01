@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel's Bio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Daniel's Bio</title> <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Kanit:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif; /* Основной шрифт для всего текста */
+            font-family: 'Kanit', sans-serif; /* Стильный шрифт для основного текста */
             text-align: left;
             margin: 0;
-            padding: 50px;
-            background-color: #1a1a1a; /* Запасной цвет */
+            padding: 50px; /* Отступы для десктопа */
+            background-color: #0d0d0d; /* Еще более темный запасной цвет */
             color: #f0f0f0;
             line-height: 1.6;
             min-height: 100vh;
@@ -20,41 +19,44 @@
             align-items: flex-start;
             justify-content: flex-start;
 
-            /* Фон - ТВОЯ GIF */
-            background-image: url('https://i.pinimg.com/originals/8a/f8/03/8af803500ecd7bedc4114b0ce566dfa9.gif'); /* ССЫЛКА НА ТВОЮ GIF */
+            /* НОВОЕ КРУТОЕ ФОТО */
+            background-image: url('https://i.pinimg.com/736x/ba/a4/40/baa440d08aa165fb16ff236985052eaf.jpg'); /* НОВАЯ ССЫЛКА НА ФОТО */
             background-size: cover;
-            background-position: center;
+            background-position: center center; /* Центрируем фото */
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-blend-mode: overlay; /* Режим наложения */
-            background-color: rgba(0, 0, 0, 0.7); /* Более темный оверлей для лучшей читаемости */
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, 0.85); /* ЕЩЕ БОЛЕЕ темный оверлей для максимальной читаемости на фото */
         }
         h1 {
-            font-family: 'Montserrat', sans-serif; /* Отдельный шрифт для заголовка */
+            font-family: 'Space Mono', monospace; /* Крутой, моноширинный шрифт для заголовка */
             color: #ffffff; /* Белый цвет для заголовка */
             margin-bottom: 30px;
             text-align: left;
             width: 100%;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень для заголовка */
+            font-weight: 700; /* Делаем жирнее */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5); /* Неоновая тень */
         }
         p {
-            font-size: 1.1em;
+            font-size: 1.1em; /* Размер шрифта для десктопа */
             max-width: 800px;
             margin-bottom: 15px;
             text-align: left;
-            color: #f0f0f0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Легкая тень для текста */
+            color: #f0f0f0; /* Цвет по умолчанию для текста, который не имеет info-item */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Тень для читаемости */
         }
         .info-item {
-            color: #00e676; /* Яркий неоновый зеленый */
+            color: #00ffff; /* Яркий циан (голубой), неоновый */
+            font-weight: 700; /* Делаем жирнее для акцента */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Легкая неоновая тень */
         }
         .love-text {
-            color: #ff3366; /* Яркий живой красный */
-            font-size: 1.3em; /* Чуть крупнее */
-            margin-top: 20px;
-            margin-bottom: 30px;
-            font-weight: 700; /* Жирный */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            color: #ff00ff; /* Яркий фуксия (пурпурный), неоновый */
+            font-size: 1.4em; /* Еще крупнее */
+            margin-top: 25px; /* Чуть больше отступ сверху */
+            margin-bottom: 35px; /* Чуть больше отступ снизу */
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.7), 0 0 15px rgba(255, 0, 255, 0.4); /* Сильная неоновая тень */
         }
         .contacts {
             margin-top: 40px;
@@ -62,39 +64,97 @@
         }
         .contacts p {
             color: #f0f0f0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
         }
         .contacts a {
-            color: #4fc3f7; /* Яркий голубой */
+            color: #00ff7f; /* Яркий весенний зеленый, неоновый */
             text-decoration: none;
             margin-right: 15px;
             transition: color 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-weight: 700; /* Жирнее */
+            text-shadow: 0 0 5px rgba(0, 255, 127, 0.5); /* Легкая неоновая тень */
         }
         .contacts a:hover {
-            color: #81d4fa; /* Чуть светлее при наведении */
+            color: #66ffbb; /* Чуть светлее при наведении */
         }
         .visitor-counter {
-            margin-top: 50px;
+            margin-top: 60px; /* Чуть больше отступ сверху */
             text-align: left;
             width: 100%;
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 0; /* Отступ вокруг счетчика для четкости */
+            gap: 10px; /* Увеличил отступ между глазом и счетчиком */
+            padding: 10px 0;
         }
         .visitor-counter img {
             vertical-align: middle;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)); /* Сильная тень для счетчика */
         }
         .visitor-counter .eye-icon {
-            font-size: 1.6em; /* Чуть крупнее глаз */
+            font-size: 1.8em; /* Еще крупнее глаз */
             line-height: 1;
             color: #ffffff; /* Белый глаз */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Тень для глаза */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Сильная неоновая тень для глаза */
         }
-        /* Стили для счетчика, чтобы он тоже выглядел контрастнее */
-        .visitor-counter img {
-            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7)); /* Тень для самого счетчика */
+
+        /* --- АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ --- */
+        @media (max-width: 768px) { /* Применяется для экранов шириной до 768px (планшеты, телефоны) */
+            body {
+                padding: 20px; /* Уменьшаем отступы по бокам */
+            }
+            h1 {
+                font-size: 1.8em; /* Уменьшаем размер заголовка */
+                margin-bottom: 20px;
+            }
+            p {
+                font-size: 1em; /* Уменьшаем основной текст */
+                margin-bottom: 10px;
+            }
+            .love-text {
+                font-size: 1.2em; /* Уменьшаем "A <3" */
+                margin-top: 15px;
+                margin-bottom: 20px;
+            }
+            .contacts {
+                margin-top: 30px;
+                font-size: 1em;
+            }
+            .contacts a {
+                margin-right: 10px; /* Уменьшаем отступ между ссылками */
+            }
+            .visitor-counter {
+                margin-top: 40px;
+                gap: 5px; /* Уменьшаем отступ между глазом и счетчиком */
+            }
+            .visitor-counter .eye-icon {
+                font-size: 1.4em; /* Уменьшаем глаз */
+            }
         }
+
+        @media (max-width: 480px) { /* Для очень маленьких экранов (смартфоны) */
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .love-text {
+                font-size: 1.1em;
+            }
+            .contacts a {
+                display: block; /* Ссылки в контактах в отдельной строке */
+                margin-bottom: 5px;
+                margin-right: 0;
+            }
+            .visitor-counter {
+                flex-direction: row; /* На всякий случай, чтобы глаз и счетчик были в ряд */
+                justify-content: flex-start;
+            }
+        }
+
     </style>
 </head>
 <body>
