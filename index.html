@@ -3,60 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dany's Bio</title>
-    <style>
+    <title>Daniel's Bio</title> <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #1a1a1a;
+            text-align: left; /* ВЕСЬ ТЕКСТ ВЛЕВО */
+            margin: 0; /* Убираем стандартные отступы */
+            padding: 50px; /* Добавляем внутренние отступы, чтобы текст не прилипал к краю */
+            background-color: #1a1a1a; /* Запасной цвет, если GIF не загрузится */
             color: #f0f0f0;
             line-height: 1.6;
+            min-height: 100vh; /* Минимальная высота страницы, чтобы фон занимал весь экран */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Выравнивание элементов по левому краю */
+            justify-content: flex-start; /* Элементы сверху */
+
+            /* Фон - ТВОЯ GIF */
+            background-image: url('https://i.pinimg.com/originals/8a/f8/03/8af803500ecd7bedc4114b0ce566dfa9.gif'); /* ССЫЛКА НА ТВОЮ GIF */
+            background-size: cover; /* Заполнение всего фона */
+            background-position: center; /* Центрирование GIF */
+            background-repeat: no-repeat; /* Не повторять GIF */
+            background-attachment: fixed; /* Фиксированный фон при скролле */
+            background-blend-mode: overlay; /* Режим наложения, чтобы текст лучше читался */
+            background-color: rgba(0, 0, 0, 0.5); /* Добавляем темный оверлей для читаемости */
         }
         h1 {
-            color: #4CAF50;
+            color: #ffffff; /* Белый цвет для "Yo bro, that's my bio:" */
             margin-bottom: 30px;
+            text-align: left; /* Заголовок влево */
+            width: 100%; /* Занимает всю доступную ширину */
         }
         p {
             font-size: 1.1em;
-            max-width: 800px;
-            margin: 0 auto 15px auto;
+            max-width: 800px; /* Ограничиваем ширину текста */
+            margin-bottom: 15px;
+            text-align: left; /* Параграфы влево */
+            color: #f0f0f0; /* Цвет по умолчанию для остального текста */
+        }
+        /* Красивые цвета для остальной инфы */
+        .info-item {
+            color: #8bff88; /* Светло-зеленый (для имени, возраста, страны, игр, животных) */
         }
         .love-text {
             color: #ff4d4d; /* Красный цвет для "A <3" */
             font-size: 1.2em;
-            margin-top: 20px; /* Отступ перед ним */
-            margin-bottom: 30px; /* Отступ после него, перед контактами */
+            margin-top: 20px;
+            margin-bottom: 30px;
         }
         .contacts {
             margin-top: 40px;
             font-size: 1.1em;
         }
+        .contacts p {
+            color: #f0f0f0; /* Цвет для текста "You can find me here:" */
+        }
         .contacts a {
             color: #61dafb;
             text-decoration: none;
-            margin: 0 15px;
+            margin-right: 15px; /* Отступ справа, т.к. теперь слева */
             transition: color 0.3s ease;
         }
         .contacts a:hover {
             color: #a0e8ff;
         }
         .visitor-counter {
-            margin-top: 50px; /* Отступ сверху для счетчика */
+            margin-top: 50px;
+            text-align: left; /* Счетчик тоже влево */
+            width: 100%;
+            display: flex; /* Делаем flex-контейнером для выравнивания */
+            align-items: center; /* Выравнивание по центру по вертикали */
+            gap: 8px; /* Расстояние между элементами внутри счетчика */
         }
         .visitor-counter img {
-            vertical-align: middle; /* Выравнивание картинки */
-            margin-right: 5px; /* Отступ от текста, если текст есть */
+            vertical-align: middle;
+            /* margin-right: 5px; -- Убрал, т.к. используем gap */
         }
+        .visitor-counter .eye-icon {
+            font-size: 1.5em; /* Размер эмодзи глаза */
+            line-height: 1; /* Для лучшего выравнивания */
+            color: #ffffff; /* Цвет глаза, можно изменить */
+        }
+        /* Удалил стили для .visitor-counter p, потому что параграфа больше нет */
     </style>
 </head>
 <body>
     <h1>Yo bro, that's my bio:</h1>
 
-    <p>My name is Daniel.</p>
-    <p>I'm 15.</p>
-    <p>I'm from Ukraine.</p>
-    <p>I love playing games.</p>
+    <p class="info-item">My name is Daniel.</p>
+    <p class="info-item">I'm 15.</p>
+    <p class="info-item">I'm from Ukraine.</p>
+    <p class="info-item">I love playing games.</p>
+    <p class="info-item">I really love cats and other animals.</p>
 
     <p class="love-text">A &lt;3</p>
 
@@ -64,14 +101,12 @@
         <p>You can find me here:</p>
         <p>
             <a href="https://discordapp.com/users/a3v0l" target="_blank">Discord: a3v0l</a>
-            <a href="https://t.me/ultrapiska69" target="_blank">Telegram: @ultrapiska</a>
+            <a href="https://t.me/ultrapiska69" target="_blank">Telegram: @ultrapiska69</a>
         </p>
     </div>
 
     <div class="visitor-counter">
-        <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fbiocrime.me&countColor=%23263759&style=flat&label=Visitors&labelColor=%23c4a2a2" alt="Visitors">
-        <p style="display: inline-block; margin-left: 10px; font-size: 0.9em; color: #a0a0a0;">(Total unique visitors)</p>
-    </div>
+        <span class="eye-icon">👁️</span> <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fbiocrime.me&countColor=%23263759&style=flat&label=&labelColor=%23c4a2a2" alt="Visitors"> </div>
 
 </body>
 </html>
