@@ -3,22 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Dany's Bio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 100px; /* Отступ сверху для центрирования */
-            background-color: #1a1a1a; /* Темный фон */
-            color: #f0f0f0; /* Светлый текст */
+            margin-top: 50px;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
         }
         h1 {
-            color: #4CAF50; /* Зеленый цвет для заголовка */
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+        p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto 15px auto;
+        }
+        .love-text {
+            color: #ff4d4d; /* Красный цвет для "A <3" */
+            font-size: 1.2em;
+            margin-top: 20px; /* Отступ перед ним */
+            margin-bottom: 30px; /* Отступ после него, перед контактами */
+        }
+        .contacts {
+            margin-top: 40px;
+            font-size: 1.1em;
+        }
+        .contacts a {
+            color: #61dafb;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .contacts a:hover {
+            color: #a0e8ff;
+        }
+        .visitor-counter {
+            margin-top: 50px; /* Отступ сверху для счетчика */
+        }
+        .visitor-counter img {
+            vertical-align: middle; /* Выравнивание картинки */
+            margin-right: 5px; /* Отступ от текста, если текст есть */
         }
     </style>
 </head>
 <body>
-    <h1>Yo bro, this is my first website :O
-    </h1>
+    <h1>Yo bro, that's my bio:</h1>
+
+    <p>My name is Daniel.</p>
+    <p>I'm 15.</p>
+    <p>I'm from Ukraine.</p>
+    <p>I love playing games.</p>
+
+    <p class="love-text">A &lt;3</p>
+
+    <div class="contacts">
+        <p>You can find me here:</p>
+        <p>
+            <a href="https://discordapp.com/users/a3v0l" target="_blank">Discord: a3v0l</a>
+            <a href="https://t.me/ultrapiska69" target="_blank">Telegram: @ultrapiska</a>
+        </p>
+    </div>
+
+    <div class="visitor-counter">
+        <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fbiocrime.me&countColor=%23263759&style=flat&label=Visitors&labelColor=%23c4a2a2" alt="Visitors">
+        <p style="display: inline-block; margin-left: 10px; font-size: 0.9em; color: #a0a0a0;">(Total unique visitors)</p>
+    </div>
+
 </body>
 </html>
