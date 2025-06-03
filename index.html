@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My AI Interface</title> <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>AI Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             /* Основные цвета Gemini-подобного интерфейса */
-            --bg-dark: #1E1E1E; /* Основной очень темный фон */
-            --card-bg-dark: #2F2F2F; /* Фон для основного блока контента */
-            --text-light: #E0E0E0; /* Светлый текст */
-            --text-muted: #B0B0B0; /* Более приглушенный текст */
-            --accent-blue: #8AB4F8; /* Цвет акцентного текста, как в Gemini */
-            --border-color: #4A4A4A; /* Цвет границы */
+            --bg-dark: #121212; /* Ещё темнее фон */
+            --card-bg-dark: #1F1F1F; /* Ещё темнее фон для основного блока контента */
+            --text-light: #E0E0E0;
+            --text-muted: #888888; /* Чуть темнее приглушенный текст */
+            --accent-blue: #8AB4F8;
+            --border-color: #3A3A3A; /* Чуть темнее граница */
 
-            /* Твои неоновые цвета (сохранены, если захочешь их использовать) */
-            --neon-cyan: #00ffff;
-            --neon-fuchsia: #ff00ff;
-            --neon-green: #00ff7f;
-            --neon-orange: #FFA500;
+            /* Твои усиленные неоновые цвета */
+            --neon-cyan: #00FFFF; /* Яркий, чистый циан */
+            --neon-fuchsia: #FF00FF; /* Яркая, чистая фуксия */
+            --neon-green: #00FF7F; /* Яркий, чистый весенний зеленый */
+            --neon-orange: #FF8C00; /* Яркий, чистый оранжевый */
+            --neon-purple: #BF00FF; /* Добавил неоновый фиолетовый */
         }
 
         body {
@@ -35,11 +38,11 @@
             overflow-x: hidden;
         }
 
-        /* Контейнер для всего "окна чата" */
         .chat-window {
             background-color: var(--card-bg-dark);
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-color);
+            /* Усилим неоновое свечение вокруг окна */
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3), 0 0 50px rgba(0, 255, 255, 0.15), 0 0 0 1px var(--border-color);
             width: 100%;
             max-width: 900px;
             margin: 40px 20px;
@@ -47,50 +50,55 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            min-height: calc(100vh - 80px); /* Чтобы окно занимало почти всю высоту */
-            justify-content: space-between; /* Прижимаем input-area к низу */
+            min-height: calc(100vh - 80px);
+            justify-content: space-between;
         }
 
         h1 {
             font-family: 'Space Mono', monospace;
-            font-size: 2.5em;
+            font-size: 2.8em; /* Сделал ещё крупнее */
             color: var(--text-light);
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 30px; /* Увеличил отступ */
+            text-align: center; /* Заголовок по центру */
             font-weight: 700;
-            /* Неоновая тень */
-            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px rgba(0, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.4);
+            /* ОЧЕНЬ СИЛЬНАЯ НЕОНОВАЯ ТЕНЬ для заголовка */
+            text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan), 0 0 45px rgba(0, 255, 255, 0.7), 0 0 60px rgba(0, 255, 255, 0.4);
         }
 
-        /* Область для сообщений чата */
         .chat-messages {
-            flex-grow: 1; /* Чтобы занимал всё доступное пространство */
-            padding-bottom: 20px; /* Отступ от поля ввода */
-            overflow-y: auto; /* Прокрутка, если сообщений много */
-            /* Здесь будут появляться сообщения ИИ и пользователя */
+            flex-grow: 1;
+            padding-bottom: 20px;
+            overflow-y: auto;
+            display: flex; /* Для выравнивания сообщений */
+            flex-direction: column; /* Сообщения идут сверху вниз */
+            gap: 15px; /* Отступ между сообщениями */
         }
 
-        /* Стиль для отдельного сообщения (пример) */
         .message {
-            background-color: #4A4A4A; /* Фон сообщения */
-            border-radius: 8px;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            max-width: 80%; /* Ограничение ширины сообщения */
-            word-wrap: break-word; /* Перенос длинных слов */
+            background-color: #3C3C3C; /* Чуть темнее фон сообщения */
+            border-radius: 12px; /* Более закругленные углы */
+            padding: 12px 18px;
+            max-width: 85%; /* Увеличил ширину */
+            word-wrap: break-word;
+            line-height: 1.5;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Мягкая тень для объема */
+            font-size: 1.05em;
         }
 
         .message.user {
-            background-color: #555555;
-            align-self: flex-end; /* Сообщения пользователя справа */
-            margin-left: auto;
+            background-color: #4C4C4C; /* Фон для сообщений пользователя */
+            margin-left: auto; /* Прижимает к правой стороне */
+            /* Неоновый акцент на сообщениях пользователя */
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 127, 0.5), 0 0 20px rgba(0, 255, 127, 0.3);
         }
 
         .message.ai {
-            background-color: #3C3C3C;
-            align-self: flex-start; /* Сообщения ИИ слева */
-            margin-right: auto;
-            border-left: 3px solid var(--accent-blue); /* Неоновая полоска слева */
+            background-color: #333333; /* Фон для сообщений ИИ */
+            margin-right: auto; /* Прижимает к левой стороне */
+            /* Неоновый акцент на сообщениях ИИ */
+            border-left: 4px solid var(--neon-purple); /* Более выраженная неоновая полоска */
+            box-shadow: 0 0 10px rgba(191, 0, 255, 0.5), 0 0 20px rgba(191, 0, 255, 0.3);
         }
 
         /* --- Стилизация "поля ввода" --- */
@@ -105,43 +113,54 @@
         }
         .input-box {
             flex-grow: 1;
-            background-color: #3C3C3C;
-            border-radius: 25px;
-            padding: 12px 20px;
+            background-color: #282828; /* Ещё темнее фон поля ввода */
+            border-radius: 28px; /* Сильно закругленные углы */
+            padding: 14px 22px; /* Увеличил отступы */
             color: var(--text-light);
             font-size: 1em;
             outline: none;
-            border: none;
+            border: 1px solid var(--border-color); /* Тонкая граница */
             min-height: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            /* Неоновое свечение на поле ввода */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 5px rgba(0, 255, 255, 0.1);
+            transition: box-shadow 0.3s ease;
         }
+        .input-box:focus-within { /* Свечение при фокусе */
+            box-shadow: 0 0 15px var(--neon-cyan), 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 8px rgba(0, 255, 255, 0.3);
+        }
+
         .input-box span {
-            color: var(--text-muted); /* Цвет текста-плейсхолдера */
+            color: var(--text-muted);
+            font-style: italic; /* Плейсхолдер курсивом */
         }
         .input-icons {
             display: flex;
-            gap: 15px;
+            gap: 18px; /* Увеличил отступ между иконками */
         }
         .input-icons .icon {
-            font-size: 1.5em;
+            font-size: 1.6em; /* Увеличил размер иконок */
             color: var(--text-muted);
             cursor: pointer;
-            transition: color 0.2s ease;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
         }
         .input-icons .icon:hover {
-            color: var(--accent-blue);
+            color: var(--neon-orange); /* Неоновый оранжевый при наведении */
+            text-shadow: 0 0 8px var(--neon-orange), 0 0 15px rgba(255, 140, 0, 0.6);
         }
         .send-icon {
+            font-size: 2.2em; /* Увеличил размер кнопки отправки */
             color: var(--accent-blue);
-            font-size: 1.8em;
             cursor: pointer;
-            transition: transform 0.2s ease, color 0.2s ease;
+            transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+            text-shadow: 0 0 8px var(--accent-blue);
         }
         .send-icon:hover {
-            transform: scale(1.1);
-            color: var(--neon-cyan);
+            transform: scale(1.15);
+            color: var(--neon-green); /* Неоновый зеленый при наведении */
+            text-shadow: 0 0 10px var(--neon-green), 0 0 20px rgba(0, 255, 127, 0.6);
         }
 
         /* --- АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ --- */
@@ -153,22 +172,33 @@
                 min-height: calc(100vh - 40px);
             }
             h1 {
-                font-size: 2.1em;
-                margin-bottom: 20px;
+                font-size: 2.2em;
+                margin-bottom: 25px;
             }
-            .input-area {
-                margin-top: 35px;
-                padding-top: 20px;
+            .chat-messages {
                 gap: 10px;
             }
-            .input-box {
+            .message {
                 padding: 10px 15px;
+                max-width: 90%;
+            }
+            .input-area {
+                margin-top: 30px;
+                padding-top: 20px;
+                gap: 12px;
+            }
+            .input-box {
+                padding: 12px 18px;
+                border-radius: 24px;
+            }
+            .input-icons {
+                gap: 15px;
             }
             .input-icons .icon {
-                font-size: 1.3em;
+                font-size: 1.4em;
             }
             .send-icon {
-                font-size: 1.6em;
+                font-size: 2em;
             }
         }
 
@@ -180,8 +210,15 @@
                 min-height: calc(100vh - 30px);
             }
             h1 {
-                font-size: 1.8em;
-                margin-bottom: 15px;
+                font-size: 1.9em;
+                margin-bottom: 20px;
+            }
+            .chat-messages {
+                gap: 8px;
+            }
+            .message {
+                padding: 8px 12px;
+                font-size: 0.95em;
             }
             .input-area {
                 flex-direction: column;
@@ -190,19 +227,27 @@
             }
             .input-box {
                 width: 100%;
-                padding: 8px 12px;
+                padding: 10px 15px;
+                border-radius: 20px;
             }
             .input-icons {
                 width: 100%;
                 justify-content: flex-end;
+                gap: 10px;
+            }
+            .input-icons .icon {
+                font-size: 1.2em;
+            }
+            .send-icon {
+                font-size: 1.8em;
+                align-self: flex-end; /* Прижать к правому краю, если input-area в колонке */
             }
         }
-
     </style>
 </head>
 <body>
     <div class="chat-window">
-        <h1>My AI Chat</h1> <div class="chat-messages">
+        <h1>AI Assistant</h1> <div class="chat-messages" id="chat-messages">
             <div class="message ai">
                 Привет, Даня! Я готов к твоему запросу.
             </div>
@@ -215,15 +260,102 @@
         </div>
 
         <div class="input-area">
-            <div class="input-box">
-                <span>Type your query here...</span> <div class="input-icons">
-                    <span class="icon">➕</span>
-                    <span class="icon">🖼️</span>
-                    <span class="icon">🎤</span>
-                </div>
-            </div>
-            <span class="send-icon">⬆️</span>
+            <input type="text" id="user-input" class="input-box" placeholder="Type your query here...">
+            <div class="input-icons">
+                <i class="fas fa-plus-circle icon"></i> <i class="fas fa-image icon"></i>      <i class="fas fa-microphone icon"></i> </div>
+            <i class="fas fa-arrow-up send-icon" id="send-button"></i>
         </div>
     </div>
+
+    <script>
+        // Получаем ссылки на элементы страницы
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        // Функция для добавления сообщения в чат
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            // Прокручиваем чат вниз к последнему сообщению
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Функция для обработки отправки сообщения
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return; // Если сообщение пустое, ничего не делаем
+
+            addMessage(message, 'user'); // Добавляем сообщение пользователя
+            userInput.value = ''; // Очищаем поле ввода
+
+            // *******************************************************************
+            // *** ВАЖНО: ПОДКЛЮЧЕНИЕ ТВОЕГО ИИ И API КЛЮЧА ***
+            // *******************************************************************
+
+            // !!! БЕЗОПАСНОСТЬ API КЛЮЧА: !!!
+            // Никогда не размещай свой API ключ напрямую в клиентском JavaScript (здесь)!
+            // Это сделает его видимым для любого, кто посмотрит исходный код страницы.
+            // Для безопасного использования API ключа, обычно требуется бэкенд (сервер),
+            // который будет скрывать ключ и делать запросы к API от твоего имени.
+            // GitHub Pages - это СТАТИЧЕСКИЙ хостинг, он не может запускать бэкенд.
+            // Если твой ИИ API не требует секретного ключа (т.е. он предназначен для
+            // публичного клиентского использования без ограничений на IP), то ты можеs
+            // использовать его здесь. В противном случае, тебе потребуется настроить
+            // прокси-сервер или использовать платформу, поддерживающую функции (например,
+            // Netlify Functions, Vercel Serverless Functions) для безопасного запроса.
+
+            addMessage('AI is thinking...', 'ai'); // Показываем, что ИИ "думает"
+
+            try {
+                // --- Пример ЗАПРОСА к API (замени на свой API) ---
+                // Предполагается, что у тебя есть API, к которому ты можешь отправлять запросы.
+                // Замени `ВАШ_API_ENDPOINT` на адрес твоего API.
+                // Замени `ВАШ_API_КЛЮЧ` на свой ключ, НО ПОМНИ О БЕЗОПАСНОСТИ!
+                // Метод запроса (GET/POST) и формат данных (JSON/FormData) зависят от твоего API.
+
+                // const apiKey = 'ВАШ_API_КЛЮЧ'; // НЕ БЕЗОПАСНО! Только для тестовых публичных API.
+                // const apiEndpoint = 'https://api.your-ai-service.com/predict'; // Пример
+                // const response = await fetch(apiEndpoint, {
+                //     method: 'POST', // Или 'GET', зависит от API
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //         // 'Authorization': `Bearer ${apiKey}` // Если API требует токен авторизации
+                //     },
+                //     body: JSON.stringify({ prompt: message }) // Пример тела запроса
+                // });
+
+                // const data = await response.json();
+                // const aiResponse = data.response_text; // Или другой ключ в ответе API
+
+                // --- Заглушка, если API пока не подключен ---
+                // Замени это на реальный вызов API, когда будешь готов
+                await new Promise(resolve => setTimeout(resolve, 1500)); // Имитация задержки ИИ
+                const aiResponse = `Я получил твой запрос: "${message}". Пока я не подключен к настоящему ИИ, но скоро буду!`;
+
+                // --- Конец примера ---
+
+                chatMessages.lastChild.remove(); // Удаляем сообщение "AI is thinking..."
+                addMessage(aiResponse, 'ai'); // Добавляем ответ ИИ
+
+            } catch (error) {
+                console.error('Ошибка при запросе к ИИ:', error);
+                chatMessages.lastChild.remove(); // Удаляем "AI is thinking..."
+                addMessage('Извини, произошла ошибка при получении ответа от ИИ.', 'ai');
+            }
+        }
+
+        // Обработчик события для кнопки отправки
+        sendButton.addEventListener('click', sendMessage);
+
+        // Обработчик события для нажатия Enter в поле ввода
+        userInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
 </body>
 </html>
